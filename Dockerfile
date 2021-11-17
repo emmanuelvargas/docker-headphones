@@ -38,7 +38,7 @@ RUN \
  make && \
  make install && \
  echo "**** install app ****" && \
- git clone --depth 1 https://github.com/rembo10/headphones.git /app/headphones && \
+ git clone --depth 1 https://github.com/emmanuelvargas/headphones.git /app/headphones && \
  echo "**** cleanup ****" && \
  apk del --purge \
 	build-dependencies && \
