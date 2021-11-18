@@ -2,7 +2,7 @@
 
 # project information
 project_name: headphones
-project_url: "https://github.com/rembo10/headphones"
+project_url: "https://github.com/emmanuelvargas/headphones"
 project_logo: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/headphones-banner.png"
 project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) is an automated music downloader for NZB and Torrent, written in Python. It supports SABnzbd, NZBget, Transmission, µTorrent and Blackhole."
 project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
