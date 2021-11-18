@@ -1,11 +1,11 @@
 ---
 
 # project information
-project_name: headphones
+project_name: headphones-bandcamp
 project_url: "https://github.com/emmanuelvargas/headphones"
 project_logo: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/headphones-banner.png"
 project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) is an automated music downloader for NZB and Torrent, written in Python. It supports SABnzbd, NZBget, Transmission, µTorrent and Blackhole."
-project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
+project_lsio_github_repo_url: "https://github.com/emmanuelvargas/docker-{{ project_name }}"
 
 project_blurb_optional_extras_enabled: false
 project_blurb_optional_extras: []
@@ -79,6 +79,7 @@ app_setup_nginx_reverse_proxy_block: "Access WebUI at `<your-ip>:8181` and walk 
 # changelog
 
 changelogs:
+  - { date: "18.11.21:", desc: "Rebasing to emmanuelvargas headphone-bandcamp." }
   - { date: "19.12.19:", desc: "Rebasing to alpine 3.11." }
   - { date: "28.06.19:", desc: "Rebasing to alpine 3.10." }
   - { date: "09.05.19:", desc: "Add default UTC timezone if user does not set it." }

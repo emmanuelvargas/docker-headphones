@@ -18,13 +18,13 @@ pipeline {
     GITLAB_NAMESPACE=credentials('gitlab-namespace-id')
     SCARF_TOKEN=credentials('scarf_api_key')
     EXT_GIT_BRANCH = 'master'
-    EXT_USER = 'rembo10'
-    EXT_REPO = 'headphones'
+    EXT_USER = 'emmanuelvargas'
+    EXT_REPO = 'headphones-bandcamp'
     BUILD_VERSION_ARG = 'HEADPHONES_COMMIT'
-    LS_USER = 'linuxserver'
+    LS_USER = 'emmanuelvargas'
     LS_REPO = 'docker-headphones'
-    CONTAINER_NAME = 'headphones'
-    DOCKERHUB_IMAGE = 'linuxserver/headphones'
+    CONTAINER_NAME = 'headphones-bandcam'
+    DOCKERHUB_IMAGE = 'emmanuelvargas/headphones-bandcamp'
     DEV_DOCKERHUB_IMAGE = 'lsiodev/headphones'
     PR_DOCKERHUB_IMAGE = 'lspipepr/headphones'
     DIST_IMAGE = 'alpine'
@@ -156,8 +156,8 @@ pipeline {
       steps {
         script{
           env.IMAGE = env.DOCKERHUB_IMAGE
-          env.GITHUBIMAGE = 'ghcr.io/' + env.LS_USER + '/' + env.CONTAINER_NAME
-          env.GITLABIMAGE = 'registry.gitlab.com/linuxserver.io/' + env.LS_REPO + '/' + env.CONTAINER_NAME
+          env.GITHUBIMAGE = env.LS_USER + '/' + env.CONTAINER_NAME
+          env.GITLABIMAGE = 'registry.gitlab.com/emmanuelvargas/headphone-bandcamp'
           env.QUAYIMAGE = 'quay.io/linuxserver.io/' + env.CONTAINER_NAME
           if (env.MULTIARCH == 'true') {
             env.CI_TAGS = 'amd64-' + env.EXT_RELEASE_CLEAN + '-ls' + env.LS_TAG_NUMBER + '|arm32v7-' + env.EXT_RELEASE_CLEAN + '-ls' + env.LS_TAG_NUMBER + '|arm64v8-' + env.EXT_RELEASE_CLEAN + '-ls' + env.LS_TAG_NUMBER
@@ -457,17 +457,17 @@ pipeline {
         echo "Running on node: ${NODE_NAME}"
         sh "docker build \
           --label \"org.opencontainers.image.created=${GITHUB_DATE}\" \
-          --label \"org.opencontainers.image.authors=linuxserver.io\" \
-          --label \"org.opencontainers.image.url=https://github.com/linuxserver/docker-headphones/packages\" \
+          --label \"org.opencontainers.image.authors=emmanuelvargas\" \
+          --label \"org.opencontainers.image.url=https://github.com/emmanuelvargas/docker-headphones/packages\" \
           --label \"org.opencontainers.image.documentation=https://docs.linuxserver.io/images/docker-headphones\" \
-          --label \"org.opencontainers.image.source=https://github.com/linuxserver/docker-headphones\" \
+          --label \"org.opencontainers.image.source=https://github.com/emmanuelvargas/docker-headphones\" \
           --label \"org.opencontainers.image.version=${EXT_RELEASE_CLEAN}-ls${LS_TAG_NUMBER}\" \
           --label \"org.opencontainers.image.revision=${COMMIT_SHA}\" \
-          --label \"org.opencontainers.image.vendor=linuxserver.io\" \
+          --label \"org.opencontainers.image.vendor=emmanuelvargas\" \
           --label \"org.opencontainers.image.licenses=GPL-3.0-only\" \
           --label \"org.opencontainers.image.ref.name=${COMMIT_SHA}\" \
           --label \"org.opencontainers.image.title=Headphones\" \
-          --label \"org.opencontainers.image.description=[Headphones](https://github.com/rembo10/headphones) is an automated music downloader for NZB and Torrent, written in Python. It supports SABnzbd, NZBget, Transmission, µTorrent and Blackhole.\" \
+          --label \"org.opencontainers.image.description=[Headphones](https://github.com/emmanuelvargas/headphones) is an automated music downloader for NZB and Torrent, written in Python. It supports SABnzbd, NZBget, Transmission, µTorrent and Blackhole.\" \
           --no-cache --pull -t ${IMAGE}:${META_TAG} \
           --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
       }
@@ -487,17 +487,17 @@ pipeline {
             echo "Running on node: ${NODE_NAME}"
             sh "docker build \
               --label \"org.opencontainers.image.created=${GITHUB_DATE}\" \
-              --label \"org.opencontainers.image.authors=linuxserver.io\" \
-              --label \"org.opencontainers.image.url=https://github.com/linuxserver/docker-headphones/packages\" \
+              --label \"org.opencontainers.image.authors=emmanuelvargas\" \
+              --label \"org.opencontainers.image.url=https://github.com/emmanuelvargas/docker-headphones/packages\" \
               --label \"org.opencontainers.image.documentation=https://docs.linuxserver.io/images/docker-headphones\" \
-              --label \"org.opencontainers.image.source=https://github.com/linuxserver/docker-headphones\" \
+              --label \"org.opencontainers.image.source=https://github.com/emmanuelvargas/docker-headphones\" \
               --label \"org.opencontainers.image.version=${EXT_RELEASE_CLEAN}-ls${LS_TAG_NUMBER}\" \
               --label \"org.opencontainers.image.revision=${COMMIT_SHA}\" \
               --label \"org.opencontainers.image.vendor=linuxserver.io\" \
               --label \"org.opencontainers.image.licenses=GPL-3.0-only\" \
               --label \"org.opencontainers.image.ref.name=${COMMIT_SHA}\" \
               --label \"org.opencontainers.image.title=Headphones\" \
-              --label \"org.opencontainers.image.description=[Headphones](https://github.com/rembo10/headphones) is an automated music downloader for NZB and Torrent, written in Python. It supports SABnzbd, NZBget, Transmission, µTorrent and Blackhole.\" \
+              --label \"org.opencontainers.image.description=[Headphones](https://github.com/emmanuelvargas/headphones) is an automated music downloader for NZB and Torrent, written in Python. It supports SABnzbd, NZBget, Transmission, µTorrent and Blackhole.\" \
               --no-cache --pull -t ${IMAGE}:amd64-${META_TAG} \
               --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
           }
@@ -544,7 +544,7 @@ pipeline {
             echo "Running on node: ${NODE_NAME}"
             echo 'Logging into Github'
             sh '''#! /bin/bash
-                  echo $GITHUB_TOKEN | docker login ghcr.io -u LinuxServer-CI --password-stdin
+                  echo $GITHUB_TOKEN | docker login emmanuelvargas -u LinuxServer-CI --password-stdin
                '''
             sh "docker build \
               --label \"org.opencontainers.image.created=${GITHUB_DATE}\" \

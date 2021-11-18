@@ -8,13 +8,13 @@ release_tag: latest
 ls_branch: master
 repo_vars:
   - EXT_GIT_BRANCH = 'master'
-  - EXT_USER = 'rembo10'
-  - EXT_REPO = 'headphones'
+  - EXT_USER = 'emmanuelvargas'
+  - EXT_REPO = 'headphones-bandcamp'
   - BUILD_VERSION_ARG = 'HEADPHONES_COMMIT'
   - LS_USER = 'linuxserver'
-  - LS_REPO = 'docker-headphones'
-  - CONTAINER_NAME = 'headphones'
-  - DOCKERHUB_IMAGE = 'linuxserver/headphones'
+  - LS_REPO = 'docker-headphones-bandcamp'
+  - CONTAINER_NAME = 'headphones-bandcam'
+  - DOCKERHUB_IMAGE = 'emmanuelvargas/headphones-bandcam'
   - DEV_DOCKERHUB_IMAGE = 'lsiodev/headphones'
   - PR_DOCKERHUB_IMAGE = 'lspipepr/headphones'
   - DIST_IMAGE = 'alpine'
