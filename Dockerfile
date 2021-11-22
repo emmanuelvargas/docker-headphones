@@ -22,6 +22,9 @@ RUN \
 	ffmpeg \
 	flac \
 	mc && \
+ echo "**** install python3 ****" && \
+ apk add --no-cache python3 && \
+ pip3 install deezer-py deemix && \
  echo "**** compile shntool *** *" && \
  mkdir -p \
 	/tmp/shntool && \
